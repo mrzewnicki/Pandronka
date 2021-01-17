@@ -43,9 +43,9 @@ namespace Pandronka.Controllers
                 return StatusCode(StatusCodes.Status500InternalServerError, new Response()
                     {
                         Status = "Error",
-                        Message = "Model ID field is null. Preventing danger update interrupt"
+                        Message = "Updating interrupted due to preventing danger update method"
 
-                    }
+                }
                 );
             }
 
