@@ -41,6 +41,6 @@ namespace Pandronka_API.Models.DTOS
         public string Email { get; set; }
         [Required(ErrorMessage="Numer telefonu jest wymagany")]
         [Display(Name="Numer telefonu")]
-        public string NumberTelefonu { get; set; }
+        public string NumerTelefonu { get; set; }
     }
 }
