@@ -1,23 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "D:\\studia\\projektgrupowy\\Pandronka\\Pandronka API\\Pandronka.csproj": {}
+    "C:\\Users\\mateu\\Documents\\GitHub\\Pandronka\\Pandronka API\\Pandronka.csproj": {}
   },
   "projects": {
-    "D:\\studia\\projektgrupowy\\Pandronka\\Pandronka API\\Pandronka.csproj": {
+    "C:\\Users\\mateu\\Documents\\GitHub\\Pandronka\\Pandronka API\\Pandronka.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\studia\\projektgrupowy\\Pandronka\\Pandronka API\\Pandronka.csproj",
+        "projectUniqueName": "C:\\Users\\mateu\\Documents\\GitHub\\Pandronka\\Pandronka API\\Pandronka.csproj",
         "projectName": "Pandronka",
-        "projectPath": "D:\\studia\\projektgrupowy\\Pandronka\\Pandronka API\\Pandronka.csproj",
-        "packagesPath": "C:\\Users\\Baca\\.nuget\\packages\\",
-        "outputPath": "D:\\studia\\projektgrupowy\\Pandronka\\Pandronka API\\obj\\",
+        "projectPath": "C:\\Users\\mateu\\Documents\\GitHub\\Pandronka\\Pandronka API\\Pandronka.csproj",
+        "packagesPath": "C:\\Users\\mateu\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\mateu\\Documents\\GitHub\\Pandronka\\Pandronka API\\obj\\",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
-        ],
         "configFilePaths": [
-          "C:\\Users\\Baca\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\mateu\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
