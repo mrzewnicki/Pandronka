@@ -36,7 +36,7 @@ namespace Pandronka
             );
             services.AddControllers();
 
-            services.AddIdentity<ApplicationUser, IdentityRole>(options =>
+            services.AddIdentity<IdentityUser, IdentityRole>(options =>
                 {
                     options.User.RequireUniqueEmail = true;
                 })
