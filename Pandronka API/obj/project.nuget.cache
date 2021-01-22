@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "V271vAJg4GcXzD72f5vCQK0DX6FNhY4KgCYOMeVCGOF0kQwFTassxqPFkGcqQFK/8ZhtQBKY2bTSsvWh8K/4kA==",
+  "dgSpecHash": "OJ9afFd03iM/8t12bKf2jyfD6sZr4Q+Sighnma/a317ima5xcdlgchKuHqgvSzlhmwLzMFEAo+tKdLTwEhOKoA==",
   "success": true,
-  "projectFilePath": "C:\\Users\\mateu\\Documents\\GitHub\\Pandronka\\Pandronka API\\Pandronka.csproj",
+  "projectFilePath": "C:\\Users\\mateu\\OneDrive\\Dokumenty\\GitHub\\Pandronka\\Pandronka API\\Pandronka.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\mateu\\.nuget\\packages\\humanizer.core\\2.8.26\\humanizer.core.2.8.26.nupkg.sha512",
     "C:\\Users\\mateu\\.nuget\\packages\\microsoft.aspnetcore.authentication\\2.2.0\\microsoft.aspnetcore.authentication.2.2.0.nupkg.sha512",
@@ -41,6 +41,7 @@
     "C:\\Users\\mateu\\.nuget\\packages\\microsoft.entityframeworkcore.design\\5.0.0\\microsoft.entityframeworkcore.design.5.0.0.nupkg.sha512",
     "C:\\Users\\mateu\\.nuget\\packages\\microsoft.entityframeworkcore.relational\\5.0.0\\microsoft.entityframeworkcore.relational.5.0.0.nupkg.sha512",
     "C:\\Users\\mateu\\.nuget\\packages\\microsoft.entityframeworkcore.sqlserver\\5.0.0\\microsoft.entityframeworkcore.sqlserver.5.0.0.nupkg.sha512",
+    "C:\\Users\\mateu\\.nuget\\packages\\microsoft.entityframeworkcore.tools\\5.0.0\\microsoft.entityframeworkcore.tools.5.0.0.nupkg.sha512",
     "C:\\Users\\mateu\\.nuget\\packages\\microsoft.extensions.caching.abstractions\\5.0.0\\microsoft.extensions.caching.abstractions.5.0.0.nupkg.sha512",
     "C:\\Users\\mateu\\.nuget\\packages\\microsoft.extensions.caching.memory\\5.0.0\\microsoft.extensions.caching.memory.5.0.0.nupkg.sha512",
     "C:\\Users\\mateu\\.nuget\\packages\\microsoft.extensions.configuration.abstractions\\5.0.0\\microsoft.extensions.configuration.abstractions.5.0.0.nupkg.sha512",

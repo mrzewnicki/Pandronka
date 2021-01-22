@@ -68,6 +68,8 @@ namespace Pandronka.Controllers
 
         public IActionResult Logout()
         {
+            //TODO:
+            SignOut();
             return Ok();
         }
 
@@ -127,6 +129,7 @@ namespace Pandronka.Controllers
 
         public IActionResult ChangePassword([FromBody] ChangePasswordDTO request)
         {
+            //TODO
             return Ok();
         }
 

@@ -25,6 +25,6 @@ namespace Pandronka_API.Models.DTOS
         public string Nazwa { get; set; }
         public int Id { get; set; }
         public string Kategoria { get; set; }
-        public float Cena { get; set; }
+        public double Cena { get; set; }
     }
 }

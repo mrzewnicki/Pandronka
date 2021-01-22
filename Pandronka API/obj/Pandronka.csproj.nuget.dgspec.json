@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\mateu\\Documents\\GitHub\\Pandronka\\Pandronka API\\Pandronka.csproj": {}
+    "C:\\Users\\mateu\\OneDrive\\Dokumenty\\GitHub\\Pandronka\\Pandronka API\\Pandronka.csproj": {}
   },
   "projects": {
-    "C:\\Users\\mateu\\Documents\\GitHub\\Pandronka\\Pandronka API\\Pandronka.csproj": {
+    "C:\\Users\\mateu\\OneDrive\\Dokumenty\\GitHub\\Pandronka\\Pandronka API\\Pandronka.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\mateu\\Documents\\GitHub\\Pandronka\\Pandronka API\\Pandronka.csproj",
+        "projectUniqueName": "C:\\Users\\mateu\\OneDrive\\Dokumenty\\GitHub\\Pandronka\\Pandronka API\\Pandronka.csproj",
         "projectName": "Pandronka",
-        "projectPath": "C:\\Users\\mateu\\Documents\\GitHub\\Pandronka\\Pandronka API\\Pandronka.csproj",
+        "projectPath": "C:\\Users\\mateu\\OneDrive\\Dokumenty\\GitHub\\Pandronka\\Pandronka API\\Pandronka.csproj",
         "packagesPath": "C:\\Users\\mateu\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\mateu\\Documents\\GitHub\\Pandronka\\Pandronka API\\obj\\",
+        "outputPath": "C:\\Users\\mateu\\OneDrive\\Dokumenty\\GitHub\\Pandronka\\Pandronka API\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\mateu\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -26,6 +26,7 @@
         },
         "frameworks": {
           "netcoreapp3.1": {
+            "targetAlias": "netcoreapp3.1",
             "projectReferences": {}
           }
         },
@@ -37,6 +38,7 @@
       },
       "frameworks": {
         "netcoreapp3.1": {
+          "targetAlias": "netcoreapp3.1",
           "dependencies": {
             "Microsoft.AspNetCore.Identity": {
               "target": "Package",
@@ -55,6 +57,12 @@
               "version": "[5.0.0, )"
             },
             "Microsoft.EntityFrameworkCore.SqlServer": {
+              "target": "Package",
+              "version": "[5.0.0, )"
+            },
+            "Microsoft.EntityFrameworkCore.Tools": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
               "target": "Package",
               "version": "[5.0.0, )"
             },
@@ -85,7 +93,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.201\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.102\\RuntimeIdentifierGraph.json"
         }
       }
     }

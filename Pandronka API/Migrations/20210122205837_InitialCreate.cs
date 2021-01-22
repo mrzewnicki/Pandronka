@@ -4,7 +4,7 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
 namespace Pandronka.Migrations
 {
-    public partial class Initialmigration : Migration
+    public partial class InitialCreate : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -33,9 +33,10 @@ namespace Pandronka.Migrations
                     Ulica = table.Column<string>(type: "text", nullable: true),
                     NumerDomu = table.Column<string>(type: "text", nullable: true),
                     KodPocztowy = table.Column<string>(type: "text", nullable: true),
+                    Email = table.Column<string>(type: "character varying(256)", maxLength: 256, nullable: true),
+                    NumerTelefonu = table.Column<string>(type: "text", nullable: true),
                     UserName = table.Column<string>(type: "character varying(256)", maxLength: 256, nullable: true),
                     NormalizedUserName = table.Column<string>(type: "character varying(256)", maxLength: 256, nullable: true),
-                    Email = table.Column<string>(type: "character varying(256)", maxLength: 256, nullable: true),
                     NormalizedEmail = table.Column<string>(type: "character varying(256)", maxLength: 256, nullable: true),
                     EmailConfirmed = table.Column<bool>(type: "boolean", nullable: false),
                     PasswordHash = table.Column<string>(type: "text", nullable: true),
@@ -80,6 +81,19 @@ namespace Pandronka.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "Platnosci",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "integer", nullable: false)
+                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
+                    Nazwa = table.Column<string>(type: "text", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Platnosci", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "Producent",
                 columns: table => new
                 {
@@ -93,7 +107,7 @@ namespace Pandronka.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Status",
+                name: "Statusy",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "integer", nullable: false)
@@ -102,7 +116,7 @@ namespace Pandronka.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Status", x => x.Id);
+                    table.PrimaryKey("PK_Statusy", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -238,11 +252,11 @@ namespace Pandronka.Migrations
                         .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
                     Nazwa = table.Column<string>(type: "text", nullable: true),
                     Ilosc = table.Column<int>(type: "integer", nullable: false),
-                    JednostkaMiaryId = table.Column<int>(type: "integer", nullable: true),
+                    JednostkaMiaryId = table.Column<int>(type: "integer", nullable: false),
                     Dostepnosc = table.Column<bool>(type: "boolean", nullable: false),
-                    KategoriaId = table.Column<int>(type: "integer", nullable: true),
-                    ProducentId = table.Column<int>(type: "integer", nullable: true),
-                    Cena = table.Column<float>(type: "real", nullable: false)
+                    KategoriaId = table.Column<int>(type: "integer", nullable: false),
+                    ProducentId = table.Column<int>(type: "integer", nullable: false),
+                    Cena = table.Column<double>(type: "double precision", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -252,19 +266,19 @@ namespace Pandronka.Migrations
                         column: x => x.JednostkaMiaryId,
                         principalTable: "JednostkaMiary",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
                         name: "FK_Produkt_Kategoria_KategoriaId",
                         column: x => x.KategoriaId,
                         principalTable: "Kategoria",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
                         name: "FK_Produkt_Producent_ProducentId",
                         column: x => x.ProducentId,
                         principalTable: "Producent",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
@@ -275,8 +289,9 @@ namespace Pandronka.Migrations
                         .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
                     Kwota = table.Column<float>(type: "real", nullable: false),
                     UzytkownikId = table.Column<string>(type: "text", nullable: true),
-                    KoszykId = table.Column<int>(type: "integer", nullable: true),
-                    StatusId = table.Column<int>(type: "integer", nullable: true)
+                    KoszykId = table.Column<int>(type: "integer", nullable: false),
+                    StatusId = table.Column<int>(type: "integer", nullable: false),
+                    PlatnoscId = table.Column<int>(type: "integer", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -292,13 +307,19 @@ namespace Pandronka.Migrations
                         column: x => x.KoszykId,
                         principalTable: "Koszyk",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_Zamowienia_Status_StatusId",
-                        column: x => x.StatusId,
-                        principalTable: "Status",
+                        name: "FK_Zamowienia_Platnosci_PlatnoscId",
+                        column: x => x.PlatnoscId,
+                        principalTable: "Platnosci",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
+                    table.ForeignKey(
+                        name: "FK_Zamowienia_Statusy_StatusId",
+                        column: x => x.StatusId,
+                        principalTable: "Statusy",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
@@ -322,6 +343,79 @@ namespace Pandronka.Migrations
                         principalTable: "Produkt",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
+                });
+
+            migrationBuilder.InsertData(
+                table: "JednostkaMiary",
+                columns: new[] { "Id", "Nazwa" },
+                values: new object[,]
+                {
+                    { 1, "ml" },
+                    { 2, "gr" },
+                    { 3, "szt" }
+                });
+
+            migrationBuilder.InsertData(
+                table: "Kategoria",
+                columns: new[] { "Id", "Nazwa" },
+                values: new object[,]
+                {
+                    { 1, "Nabiał" },
+                    { 2, "Mięso" },
+                    { 3, "Pieczywo" },
+                    { 4, "Napoje" },
+                    { 5, "Alkohol" }
+                });
+
+            migrationBuilder.InsertData(
+                table: "Platnosci",
+                columns: new[] { "Id", "Nazwa" },
+                values: new object[,]
+                {
+                    { 2, "Za pobraniem" },
+                    { 3, "Przelewem tradycyjnym" },
+                    { 1, "Online" }
+                });
+
+            migrationBuilder.InsertData(
+                table: "Producent",
+                columns: new[] { "Id", "Nazwa" },
+                values: new object[,]
+                {
+                    { 1, "Piątnica" },
+                    { 2, "Hortex" },
+                    { 3, "Grella" },
+                    { 4, "CocaCola" },
+                    { 5, "Polmos" },
+                    { 7, "Sokołów" }
+                });
+
+            migrationBuilder.InsertData(
+                table: "Statusy",
+                columns: new[] { "Id", "Nazwa" },
+                values: new object[,]
+                {
+                    { 3, "W drodze do klienta" },
+                    { 1, "Nowe" },
+                    { 2, "W kompletowaniu" },
+                    { 4, "Zakończone" }
+                });
+
+            migrationBuilder.InsertData(
+                table: "Produkt",
+                columns: new[] { "Id", "Cena", "Dostepnosc", "Ilosc", "JednostkaMiaryId", "KategoriaId", "Nazwa", "ProducentId" },
+                values: new object[,]
+                {
+                    { 1, 3.5, true, 11, 1, 1, "Jogurt naturalny", 1 },
+                    { 2, 4.9900000000000002, true, 9, 1, 1, "Jogurt owocowy", 1 },
+                    { 3, 5.9900000000000002, true, 500, 1, 1, "Mleko", 1 },
+                    { 4, 10.9, true, 9, 2, 2, "Pierś z kurczaka", 2 },
+                    { 8, 4.9000000000000004, true, 50, 1, 4, "Sok pomarańczowy", 2 },
+                    { 9, 4.9000000000000004, true, 50, 1, 4, "Sok pożeczkowy", 2 },
+                    { 6, 1.2, true, 200, 3, 3, "Kajzerka", 3 },
+                    { 7, 2.0, true, 100, 3, 3, "Chleb", 3 },
+                    { 10, 19.899999999999999, true, 500, 1, 5, "Pan Tadeusz", 5 },
+                    { 5, 7.9000000000000004, true, 122, 2, 2, "Podwawelska", 7 }
                 });
 
             migrationBuilder.CreateIndex(
@@ -398,6 +492,11 @@ namespace Pandronka.Migrations
                 column: "KoszykId");
 
             migrationBuilder.CreateIndex(
+                name: "IX_Zamowienia_PlatnoscId",
+                table: "Zamowienia",
+                column: "PlatnoscId");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_Zamowienia_StatusId",
                 table: "Zamowienia",
                 column: "StatusId");
@@ -441,7 +540,10 @@ namespace Pandronka.Migrations
                 name: "Koszyk");
 
             migrationBuilder.DropTable(
-                name: "Status");
+                name: "Platnosci");
+
+            migrationBuilder.DropTable(
+                name: "Statusy");
 
             migrationBuilder.DropTable(
                 name: "JednostkaMiary");

@@ -10,8 +10,8 @@ using Pandronka.Models;
 namespace Pandronka.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20201206102325_Initial migration")]
-    partial class Initialmigration
+    [Migration("20210122205837_InitialCreate")]
+    partial class InitialCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -199,6 +199,9 @@ namespace Pandronka.Migrations
                     b.Property<string>("NumerDomu")
                         .HasColumnType("text");
 
+                    b.Property<string>("NumerTelefonu")
+                        .HasColumnType("text");
+
                     b.Property<string>("PasswordHash")
                         .HasColumnType("text");
 
@@ -246,6 +249,23 @@ namespace Pandronka.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("JednostkaMiary");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Nazwa = "ml"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            Nazwa = "gr"
+                        },
+                        new
+                        {
+                            Id = 3,
+                            Nazwa = "szt"
+                        });
                 });
 
             modelBuilder.Entity("Pandronka.Models.Kategoria", b =>
@@ -261,6 +281,33 @@ namespace Pandronka.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Kategoria");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Nazwa = "Nabiał"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            Nazwa = "Mięso"
+                        },
+                        new
+                        {
+                            Id = 3,
+                            Nazwa = "Pieczywo"
+                        },
+                        new
+                        {
+                            Id = 4,
+                            Nazwa = "Napoje"
+                        },
+                        new
+                        {
+                            Id = 5,
+                            Nazwa = "Alkohol"
+                        });
                 });
 
             modelBuilder.Entity("Pandronka.Models.Kosz_Prod", b =>
@@ -296,6 +343,38 @@ namespace Pandronka.Migrations
                     b.ToTable("Koszyk");
                 });
 
+            modelBuilder.Entity("Pandronka.Models.Platnosc", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer")
+                        .UseIdentityByDefaultColumn();
+
+                    b.Property<string>("Nazwa")
+                        .HasColumnType("text");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Platnosci");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Nazwa = "Online"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            Nazwa = "Za pobraniem"
+                        },
+                        new
+                        {
+                            Id = 3,
+                            Nazwa = "Przelewem tradycyjnym"
+                        });
+                });
+
             modelBuilder.Entity("Pandronka.Models.Producent", b =>
                 {
                     b.Property<int>("Id")
@@ -309,6 +388,38 @@ namespace Pandronka.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Producent");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Nazwa = "Piątnica"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            Nazwa = "Hortex"
+                        },
+                        new
+                        {
+                            Id = 3,
+                            Nazwa = "Grella"
+                        },
+                        new
+                        {
+                            Id = 4,
+                            Nazwa = "CocaCola"
+                        },
+                        new
+                        {
+                            Id = 5,
+                            Nazwa = "Polmos"
+                        },
+                        new
+                        {
+                            Id = 7,
+                            Nazwa = "Sokołów"
+                        });
                 });
 
             modelBuilder.Entity("Pandronka.Models.Produkt", b =>
@@ -318,8 +429,8 @@ namespace Pandronka.Migrations
                         .HasColumnType("integer")
                         .UseIdentityByDefaultColumn();
 
-                    b.Property<float>("Cena")
-                        .HasColumnType("real");
+                    b.Property<double>("Cena")
+                        .HasColumnType("double precision");
 
                     b.Property<bool>("Dostepnosc")
                         .HasColumnType("boolean");
@@ -327,16 +438,16 @@ namespace Pandronka.Migrations
                     b.Property<int>("Ilosc")
                         .HasColumnType("integer");
 
-                    b.Property<int?>("JednostkaMiaryId")
+                    b.Property<int>("JednostkaMiaryId")
                         .HasColumnType("integer");
 
-                    b.Property<int?>("KategoriaId")
+                    b.Property<int>("KategoriaId")
                         .HasColumnType("integer");
 
                     b.Property<string>("Nazwa")
                         .HasColumnType("text");
 
-                    b.Property<int?>("ProducentId")
+                    b.Property<int>("ProducentId")
                         .HasColumnType("integer");
 
                     b.HasKey("Id");
@@ -348,6 +459,118 @@ namespace Pandronka.Migrations
                     b.HasIndex("ProducentId");
 
                     b.ToTable("Produkt");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Cena = 3.5,
+                            Dostepnosc = true,
+                            Ilosc = 11,
+                            JednostkaMiaryId = 1,
+                            KategoriaId = 1,
+                            Nazwa = "Jogurt naturalny",
+                            ProducentId = 1
+                        },
+                        new
+                        {
+                            Id = 2,
+                            Cena = 4.9900000000000002,
+                            Dostepnosc = true,
+                            Ilosc = 9,
+                            JednostkaMiaryId = 1,
+                            KategoriaId = 1,
+                            Nazwa = "Jogurt owocowy",
+                            ProducentId = 1
+                        },
+                        new
+                        {
+                            Id = 3,
+                            Cena = 5.9900000000000002,
+                            Dostepnosc = true,
+                            Ilosc = 500,
+                            JednostkaMiaryId = 1,
+                            KategoriaId = 1,
+                            Nazwa = "Mleko",
+                            ProducentId = 1
+                        },
+                        new
+                        {
+                            Id = 4,
+                            Cena = 10.9,
+                            Dostepnosc = true,
+                            Ilosc = 9,
+                            JednostkaMiaryId = 2,
+                            KategoriaId = 2,
+                            Nazwa = "Pierś z kurczaka",
+                            ProducentId = 2
+                        },
+                        new
+                        {
+                            Id = 5,
+                            Cena = 7.9000000000000004,
+                            Dostepnosc = true,
+                            Ilosc = 122,
+                            JednostkaMiaryId = 2,
+                            KategoriaId = 2,
+                            Nazwa = "Podwawelska",
+                            ProducentId = 7
+                        },
+                        new
+                        {
+                            Id = 6,
+                            Cena = 1.2,
+                            Dostepnosc = true,
+                            Ilosc = 200,
+                            JednostkaMiaryId = 3,
+                            KategoriaId = 3,
+                            Nazwa = "Kajzerka",
+                            ProducentId = 3
+                        },
+                        new
+                        {
+                            Id = 7,
+                            Cena = 2.0,
+                            Dostepnosc = true,
+                            Ilosc = 100,
+                            JednostkaMiaryId = 3,
+                            KategoriaId = 3,
+                            Nazwa = "Chleb",
+                            ProducentId = 3
+                        },
+                        new
+                        {
+                            Id = 8,
+                            Cena = 4.9000000000000004,
+                            Dostepnosc = true,
+                            Ilosc = 50,
+                            JednostkaMiaryId = 1,
+                            KategoriaId = 4,
+                            Nazwa = "Sok pomarańczowy",
+                            ProducentId = 2
+                        },
+                        new
+                        {
+                            Id = 9,
+                            Cena = 4.9000000000000004,
+                            Dostepnosc = true,
+                            Ilosc = 50,
+                            JednostkaMiaryId = 1,
+                            KategoriaId = 4,
+                            Nazwa = "Sok pożeczkowy",
+                            ProducentId = 2
+                        },
+                        new
+                        {
+                            Id = 10,
+                            Cena = 19.899999999999999,
+                            Dostepnosc = true,
+                            Ilosc = 500,
+                            JednostkaMiaryId = 1,
+                            KategoriaId = 5,
+                            Nazwa = "Pan Tadeusz",
+                            ProducentId = 5
+                        });
                 });
 
             modelBuilder.Entity("Pandronka.Models.Status", b =>
@@ -362,7 +585,29 @@ namespace Pandronka.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Status");
+                    b.ToTable("Statusy");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Nazwa = "Nowe"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            Nazwa = "W kompletowaniu"
+                        },
+                        new
+                        {
+                            Id = 3,
+                            Nazwa = "W drodze do klienta"
+                        },
+                        new
+                        {
+                            Id = 4,
+                            Nazwa = "Zakończone"
+                        });
                 });
 
             modelBuilder.Entity("Pandronka.Models.Zamowienia", b =>
@@ -372,13 +617,16 @@ namespace Pandronka.Migrations
                         .HasColumnType("integer")
                         .UseIdentityByDefaultColumn();
 
-                    b.Property<int?>("KoszykId")
+                    b.Property<int>("KoszykId")
                         .HasColumnType("integer");
 
                     b.Property<float>("Kwota")
                         .HasColumnType("real");
 
-                    b.Property<int?>("StatusId")
+                    b.Property<int?>("PlatnoscId")
+                        .HasColumnType("integer");
+
+                    b.Property<int>("StatusId")
                         .HasColumnType("integer");
 
                     b.Property<string>("UzytkownikId")
@@ -387,6 +635,8 @@ namespace Pandronka.Migrations
                     b.HasKey("Id");
 
                     b.HasIndex("KoszykId");
+
+                    b.HasIndex("PlatnoscId");
 
                     b.HasIndex("StatusId");
 
@@ -474,15 +724,21 @@ namespace Pandronka.Migrations
                 {
                     b.HasOne("Pandronka.Models.JednostkaMiary", "JednostkaMiary")
                         .WithMany("Produkt")
-                        .HasForeignKey("JednostkaMiaryId");
+                        .HasForeignKey("JednostkaMiaryId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.HasOne("Pandronka.Models.Kategoria", "Kategoria")
                         .WithMany("Produkt")
-                        .HasForeignKey("KategoriaId");
+                        .HasForeignKey("KategoriaId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.HasOne("Pandronka.Models.Producent", "Producent")
                         .WithMany("Produkt")
-                        .HasForeignKey("ProducentId");
+                        .HasForeignKey("ProducentId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.Navigation("JednostkaMiary");
 
@@ -495,17 +751,27 @@ namespace Pandronka.Migrations
                 {
                     b.HasOne("Pandronka.Models.Koszyk", "Koszyk")
                         .WithMany()
-                        .HasForeignKey("KoszykId");
+                        .HasForeignKey("KoszykId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("Pandronka.Models.Platnosc", "Platnosc")
+                        .WithMany()
+                        .HasForeignKey("PlatnoscId");
 
                     b.HasOne("Pandronka.Models.Status", "Status")
                         .WithMany("Zamowienia")
-                        .HasForeignKey("StatusId");
+                        .HasForeignKey("StatusId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.HasOne("Pandronka.Models.ApplicationUser", "Uzytkownik")
                         .WithMany("Zamowienia")
                         .HasForeignKey("UzytkownikId");
 
                     b.Navigation("Koszyk");
+
+                    b.Navigation("Platnosc");
 
                     b.Navigation("Status");
 

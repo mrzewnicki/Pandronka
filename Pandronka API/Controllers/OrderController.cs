@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Humanizer;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -61,10 +62,25 @@ namespace Pandronka.Controllers
             }
         }
 
+        [HttpGet]
         public async Task<IActionResult> SelectPayment()
         {
-            //todo
-            throw new NotImplementedException();
+            if (await Db.Platnosci.AnyAsync())
+            {
+                var lst = await Db.Platnosci.ToListAsync();
+
+                return Ok(new Response()
+                {
+                    Status = "Success",
+                    Data = new []{lst}
+                });
+            }
+            return StatusCode(StatusCodes.Status500InternalServerError, new Response()
+                {
+                    Status = "Error",
+                    Message = "Does not contain any paymentoptions"
+                }
+            );
         }
 
         public async Task<IActionResult> ShowStatus(int orderId)
