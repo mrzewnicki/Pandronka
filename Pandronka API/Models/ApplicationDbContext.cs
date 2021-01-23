@@ -26,6 +26,11 @@ namespace Pandronka.Models
         protected override void OnModelCreating(ModelBuilder builder)
         {
             base.OnModelCreating(builder);
+
+            builder.Entity<ApplicationUser>()
+                .HasMany(c => c.Wykonane)
+                .WithOne(e => e.Wykonujacy);
+
             this.SeedData(builder);
         }
 

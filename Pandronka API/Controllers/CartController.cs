@@ -17,6 +17,8 @@ namespace Pandronka.Controllers
         {
             Db = db;
         }
+
+        [HttpPost]
         public async Task<IActionResult> UpdateProduct(Produkt model)
         {
             if (!ModelState.IsValid)
@@ -72,6 +74,7 @@ namespace Pandronka.Controllers
             }
         }
 
+        [HttpPost]
         public async Task<IActionResult> AddProduct(int productId, int cartId)
         {
             if (productId == null || cartId == null)
@@ -109,6 +112,7 @@ namespace Pandronka.Controllers
             }
         }
 
+        [HttpGet]
         public async Task<IActionResult> ShowProduct(int id)
         {
             if (id == null)

@@ -57,12 +57,20 @@ namespace Pandronka
             {
                 endpoints.MapControllers();
                 endpoints.MapControllerRoute(
+                    name: "default",
+                    pattern: "{controller=Account}/{action=Login}");
+
+                endpoints.MapControllerRoute(
                     name: "register",
                     pattern: "{controller=Account}/{action=Register}");
 
                 endpoints.MapControllerRoute(
                     name: "login",
                     pattern: "{controller=Account}/{action=Login}");
+
+                endpoints.MapControllerRoute(
+                    name: "ProdDetails",
+                    pattern: "{controller=Product}/{action=ShowProduct}/{id}");
             });
         }
     }

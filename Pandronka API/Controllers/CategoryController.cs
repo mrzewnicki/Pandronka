@@ -16,8 +16,8 @@ namespace Pandronka.Controllers
         {
             Db = db;
         }
-
-        public async Task<IActionResult> UpdateCategory(Kategoria model)
+        [HttpPost]
+        public async Task<IActionResult> Update(Kategoria model)
         {
             if (!ModelState.IsValid)
             {
@@ -72,8 +72,8 @@ namespace Pandronka.Controllers
                 );
             }
         }
-
-        public async Task<IActionResult> AddCategory(Kategoria model)
+        [HttpPost]
+        public async Task<IActionResult> Add(Kategoria model)
         {
 
             if (!ModelState.IsValid)

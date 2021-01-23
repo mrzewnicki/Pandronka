@@ -18,7 +18,8 @@ namespace Pandronka.Controllers
             Db = db;
         }
 
-        public async Task<IActionResult> UpdateUnit(JednostkaMiary model)
+        [HttpPost]
+        public async Task<IActionResult> Update(JednostkaMiary model)
         {
             if (!ModelState.IsValid)
             {
@@ -63,7 +64,8 @@ namespace Pandronka.Controllers
             }
         }
 
-        public async Task<IActionResult> AddUnit(JednostkaMiary model)
+        [HttpPost]
+        public async Task<IActionResult> Add(JednostkaMiary model)
         {
             return await Task.Run(() =>
             {

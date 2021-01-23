@@ -627,7 +627,7 @@ namespace Pandronka.Migrations
                     b.Property<int>("StatusId")
                         .HasColumnType("integer");
 
-                    b.Property<string>("UzytkownikId")
+                    b.Property<string>("WykonujacyId")
                         .HasColumnType("text");
 
                     b.HasKey("Id");
@@ -638,7 +638,7 @@ namespace Pandronka.Migrations
 
                     b.HasIndex("StatusId");
 
-                    b.HasIndex("UzytkownikId");
+                    b.HasIndex("WykonujacyId");
 
                     b.ToTable("Zamowienia");
                 });
@@ -763,9 +763,9 @@ namespace Pandronka.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("Pandronka.Models.ApplicationUser", "Uzytkownik")
-                        .WithMany("Zamowienia")
-                        .HasForeignKey("UzytkownikId");
+                    b.HasOne("Pandronka.Models.ApplicationUser", "Wykonujacy")
+                        .WithMany("Wykonane")
+                        .HasForeignKey("WykonujacyId");
 
                     b.Navigation("Koszyk");
 
@@ -773,14 +773,14 @@ namespace Pandronka.Migrations
 
                     b.Navigation("Status");
 
-                    b.Navigation("Uzytkownik");
+                    b.Navigation("Wykonujacy");
                 });
 
             modelBuilder.Entity("Pandronka.Models.ApplicationUser", b =>
                 {
                     b.Navigation("Koszyk");
 
-                    b.Navigation("Zamowienia");
+                    b.Navigation("Wykonane");
                 });
 
             modelBuilder.Entity("Pandronka.Models.JednostkaMiary", b =>

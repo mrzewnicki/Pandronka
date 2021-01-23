@@ -15,8 +15,8 @@ namespace Pandronka.Controllers
         {
             Db = db;
         }
-
-        public async Task<IActionResult> UpdateManufacturer(Producent model)
+        [HttpPost]
+        public async Task<IActionResult> Update(Producent model)
         {
             if (!ModelState.IsValid)
             {
@@ -71,8 +71,8 @@ namespace Pandronka.Controllers
                 );
             }
         }
-
-        public async Task<IActionResult> AddManufacturer(Producent model)
+        [HttpPost]
+        public async Task<IActionResult> Add(Producent model)
         {
 
             if (!ModelState.IsValid)

@@ -288,7 +288,7 @@ namespace Pandronka.Migrations
                     Id = table.Column<int>(type: "integer", nullable: false)
                         .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
                     Kwota = table.Column<float>(type: "real", nullable: false),
-                    UzytkownikId = table.Column<string>(type: "text", nullable: true),
+                    WykonujacyId = table.Column<string>(type: "text", nullable: true),
                     KoszykId = table.Column<int>(type: "integer", nullable: false),
                     StatusId = table.Column<int>(type: "integer", nullable: false),
                     PlatnoscId = table.Column<int>(type: "integer", nullable: true)
@@ -297,8 +297,8 @@ namespace Pandronka.Migrations
                 {
                     table.PrimaryKey("PK_Zamowienia", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Zamowienia_AspNetUsers_UzytkownikId",
-                        column: x => x.UzytkownikId,
+                        name: "FK_Zamowienia_AspNetUsers_WykonujacyId",
+                        column: x => x.WykonujacyId,
                         principalTable: "AspNetUsers",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
@@ -502,9 +502,9 @@ namespace Pandronka.Migrations
                 column: "StatusId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Zamowienia_UzytkownikId",
+                name: "IX_Zamowienia_WykonujacyId",
                 table: "Zamowienia",
-                column: "UzytkownikId");
+                column: "WykonujacyId");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)

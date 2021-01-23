@@ -20,7 +20,8 @@ namespace Pandronka.Controllers
             Db = db;
         }
 
-        public async Task<IActionResult> AddProduct(Produkt model)
+        [HttpPost]
+        public async Task<IActionResult> Add(Produkt model)
         {
             if (!ModelState.IsValid)
             {
@@ -54,7 +55,8 @@ namespace Pandronka.Controllers
 
         }
 
-        public async Task<IActionResult> UpdateProduct(Produkt model)
+        [HttpPost]
+        public async Task<IActionResult> Update(Produkt model)
         {
             if (!ModelState.IsValid)
             {
@@ -75,16 +77,6 @@ namespace Pandronka.Controllers
                     }
                 );
             }
-
-            if (model.Id == null)
-            {
-                return StatusCode(StatusCodes.Status500InternalServerError, new Response()
-                    {
-                        Status = "Error",
-                        Message = "Model ID field is null. Updating interrupted due to preventing danger update method"
-                    }
-                );
-            } 
 
             if (Db.Produkt.Any(x => x.Id == model.Id))
             {
@@ -109,7 +101,8 @@ namespace Pandronka.Controllers
 
         }
 
-        public async Task<IActionResult> ShowProduct(int id)
+        [HttpGet]
+        public async Task<IActionResult> Show(int id)
         {
             if (id == null)
             {
@@ -121,7 +114,7 @@ namespace Pandronka.Controllers
                 );
             }
 
-            if (Db.Produkt.Any(x => x.Id == id))
+            if (await Db.Produkt.AnyAsync(x => x.Id == id))
             {
                 var found = await Db.Produkt.Where(x => x.Id == id)
                     .Include(x => x.Producent)
@@ -147,6 +140,7 @@ namespace Pandronka.Controllers
             }
         }
 
+        [HttpGet]
         public async Task<IActionResult> Index()
         {
             if (Db.Produkt.Any())

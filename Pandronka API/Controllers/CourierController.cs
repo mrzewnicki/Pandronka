@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Pandronka.Models;
 
 namespace Pandronka.Controllers
@@ -29,7 +30,7 @@ namespace Pandronka.Controllers
         /// <param name="orderId"></param>
         /// <param name="courierId"></param>
         /// <returns></returns>
-        public async Task<IActionResult> AssignOrder(int orderId, int courierId)
+        public async Task<IActionResult> AssignOrder(int orderId, string courierId)
         {
             if (orderId == null || courierId == null)
             {
@@ -42,9 +43,10 @@ namespace Pandronka.Controllers
             }
 
             //ToDO: Sprawdzić czy istnieje taki user po id - OBECNIE BRAK POLA W BAZIE PO KTÓRYM MOŻNA SPRAWDZIĆ REALIZATORA
-            if (Db.Zamowienia.Any(x => x.Id == orderId))// && Db.App.Any(x => x.Id == productId))
+            if (await Db.Zamowienia.AnyAsync(x => x.Id == orderId) && await Db.Users.AnyAsync(x=>x.Id == courierId))
             {
                 //todo: add reference between models
+                //var addingResult = Db.
 
                 return Ok(new Response()
                 {
