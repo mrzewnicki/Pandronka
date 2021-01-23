@@ -20,7 +20,7 @@ namespace Pandronka.Controllers
 
         public async Task<IActionResult> ShowAmount()
         {
-            //todo - do czego to było???
+            //todo - policzyć pełną kwote zamówienia
             throw new NotImplementedException();
         }
 
