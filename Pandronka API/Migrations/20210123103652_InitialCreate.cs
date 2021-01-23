@@ -81,6 +81,21 @@ namespace Pandronka.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "Miasta",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "integer", nullable: false)
+                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
+                    ViewName = table.Column<string>(type: "text", nullable: true),
+                    SubName = table.Column<string>(type: "text", nullable: true),
+                    PostalCode = table.Column<string>(type: "text", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Miasta", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "Platnosci",
                 columns: table => new
                 {
@@ -368,12 +383,89 @@ namespace Pandronka.Migrations
                 });
 
             migrationBuilder.InsertData(
+                table: "Miasta",
+                columns: new[] { "Id", "PostalCode", "SubName", "ViewName" },
+                values: new object[,]
+                {
+                    { 52, "04-825", "Wawer", "Warszawa" },
+                    { 51, "04-682", "Wawer", "Warszawa" },
+                    { 50, "02-468", "Włochy", "Warszawa" },
+                    { 49, "02-484", "Włochy", "Warszawa" },
+                    { 48, "05-075", "Wesoła", "Warszawa" },
+                    { 47, "05-075", "Wesoła", "Warszawa" },
+                    { 46, "00-430", "Śródmieście", "Warszawa" },
+                    { 42, "03-528", "Targówek", "Warszawa" },
+                    { 44, "00-249", "Śródmieście", "Warszawa" },
+                    { 43, "04-277", "Rembertów", "Warszawa" },
+                    { 53, "04-622", "Wawer", "Warszawa" },
+                    { 41, "03-338", "Targówek", "Warszawa" },
+                    { 40, "00-656", "Śródmieście", "Warszawa" },
+                    { 39, "00-497", "Śródmieście", "Warszawa" },
+                    { 45, "00-513", "Śródmieście", "Warszawa" },
+                    { 54, "02-243", "Włochy", "Warszawa" },
+                    { 58, "02-708", "Mokotów", "Warszawa" },
+                    { 56, "01-386", "Bemowo", "Warszawa" },
+                    { 70, "04-428", "Rembertównew", "Warszawa" },
+                    { 69, "03-610", "Targówek", "Warszawa" },
+                    { 68, "03-678", "Targówek", "Warszawa" },
+                    { 67, "00-686", "Śródmieście", "Warszawa" },
+                    { 66, "00-405", "Śródmieście", "Warszawa" },
+                    { 65, "00-453", "Śródmieście", "Warszawa" },
+                    { 55, "01-497", "Bemowo", "Warszawa" },
+                    { 64, "04-498", "Rembertów", "Warszawa" },
+                    { 62, "03-054", "Białołęka", "Warszawa" },
+                    { 61, "03-089", "Białołęka", "Warszawa" },
+                    { 60, "01-492", "Bemowo", "Warszawa" },
+                    { 59, "01-497", "Bemowo", "Warszawa" },
+                    { 37, "04-474", "Rembertów", "Warszawa" },
+                    { 57, "01-940", "Bielany", "Warszawa" },
+                    { 63, "01-995", "Bielany", "Warszawa" },
+                    { 36, "01-727", "Bielany", "Warszawa" },
+                    { 38, "00-454", "Śródmieście", "Warszawa" },
+                    { 34, "03-063", "Białołęka", "Warszawa" },
+                    { 15, "03-622", "Targówek", "Warszawa" },
+                    { 14, "03-784", "Targówek", "Warszawa" },
+                    { 13, "00-654", "Śródmieście", "Warszawa" },
+                    { 35, "03-128", "Białołęka", "Warszawa" },
+                    { 11, "00-117", "Śródmieście", "Warszawa" },
+                    { 10, "04-413", "Rembertów", "Warszawa" },
+                    { 9, "01-870", "Bielany", "Warszawa" },
+                    { 8, "03-144", "Białołęka", "Warszawa" },
+                    { 7, "03-085", "Białołęka", "Warszawa" },
+                    { 6, "01-358", "Bemowo", "Warszawa" },
+                    { 5, "01-493", "Bemowo", "Warszawa" },
+                    { 4, "00-791", "Mokotów", "Warszawa" },
+                    { 3, "01-934", "Bielany", "Warszawa" },
+                    { 2, "01-475", "Bemowo", "Warszawa" },
+                    { 1, "01-376", "Bemowo", "Warszawa" },
+                    { 16, "04-424", "Rembertów", "Warszawa" },
+                    { 17, "00-275", "Śródmieście", "Warszawa" },
+                    { 12, "00-575", "Śródmieście", "Warszawa" },
+                    { 19, "00-127", "Śródmieście", "Warszawa" },
+                    { 33, "01-318", "Bemowo", "Warszawa" },
+                    { 18, "00-229", "Śródmieście", "Warszawa" },
+                    { 32, "01-493", "Bemowo", "Warszawa" },
+                    { 30, "01-696", "Bielany", "Warszawa" },
+                    { 29, "01-317", "Bemowo", "Warszawa" },
+                    { 28, "01-480", "Bemowo", "Warszawa" },
+                    { 27, "02-441", "Włochy", "Warszawa" },
+                    { 31, "02-716", "Mokotów", "Warszawa" },
+                    { 25, "04-880", "Wawer", "Warszawa" },
+                    { 24, "04-854", "Wawer", "Warszawa" },
+                    { 23, "02-168", "Włochy", "Warszawa" },
+                    { 22, "02-490", "Włochy", "Warszawa" },
+                    { 21, "05-075", "Wesoła", "Warszawa" },
+                    { 20, "05-075", "Wesoła", "Warszawa" },
+                    { 26, "04-682", "Wawer", "Warszawa" }
+                });
+
+            migrationBuilder.InsertData(
                 table: "Platnosci",
                 columns: new[] { "Id", "Nazwa" },
                 values: new object[,]
                 {
-                    { 2, "Za pobraniem" },
                     { 3, "Przelewem tradycyjnym" },
+                    { 2, "Za pobraniem" },
                     { 1, "Online" }
                 });
 
@@ -382,12 +474,12 @@ namespace Pandronka.Migrations
                 columns: new[] { "Id", "Nazwa" },
                 values: new object[,]
                 {
+                    { 7, "Sokołów" },
                     { 1, "Piątnica" },
                     { 2, "Hortex" },
                     { 3, "Grella" },
                     { 4, "CocaCola" },
-                    { 5, "Polmos" },
-                    { 7, "Sokołów" }
+                    { 5, "Polmos" }
                 });
 
             migrationBuilder.InsertData(
@@ -395,9 +487,9 @@ namespace Pandronka.Migrations
                 columns: new[] { "Id", "Nazwa" },
                 values: new object[,]
                 {
+                    { 2, "W kompletowaniu" },
                     { 3, "W drodze do klienta" },
                     { 1, "Nowe" },
-                    { 2, "W kompletowaniu" },
                     { 4, "Zakończone" }
                 });
 
@@ -526,6 +618,9 @@ namespace Pandronka.Migrations
 
             migrationBuilder.DropTable(
                 name: "Kosz_Prod");
+
+            migrationBuilder.DropTable(
+                name: "Miasta");
 
             migrationBuilder.DropTable(
                 name: "Zamowienia");

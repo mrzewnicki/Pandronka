@@ -341,6 +341,519 @@ namespace Pandronka.Migrations
                     b.ToTable("Koszyk");
                 });
 
+            modelBuilder.Entity("Pandronka.Models.Miasto", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer")
+                        .UseIdentityByDefaultColumn();
+
+                    b.Property<string>("PostalCode")
+                        .HasColumnType("text");
+
+                    b.Property<string>("SubName")
+                        .HasColumnType("text");
+
+                    b.Property<string>("ViewName")
+                        .HasColumnType("text");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Miasta");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            PostalCode = "01-376",
+                            SubName = "Bemowo",
+                            ViewName = "Warszawa"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            PostalCode = "01-475",
+                            SubName = "Bemowo",
+                            ViewName = "Warszawa"
+                        },
+                        new
+                        {
+                            Id = 3,
+                            PostalCode = "01-934",
+                            SubName = "Bielany",
+                            ViewName = "Warszawa"
+                        },
+                        new
+                        {
+                            Id = 4,
+                            PostalCode = "00-791",
+                            SubName = "Mokotów",
+                            ViewName = "Warszawa"
+                        },
+                        new
+                        {
+                            Id = 5,
+                            PostalCode = "01-493",
+                            SubName = "Bemowo",
+                            ViewName = "Warszawa"
+                        },
+                        new
+                        {
+                            Id = 6,
+                            PostalCode = "01-358",
+                            SubName = "Bemowo",
+                            ViewName = "Warszawa"
+                        },
+                        new
+                        {
+                            Id = 7,
+                            PostalCode = "03-085",
+                            SubName = "Białołęka",
+                            ViewName = "Warszawa"
+                        },
+                        new
+                        {
+                            Id = 8,
+                            PostalCode = "03-144",
+                            SubName = "Białołęka",
+                            ViewName = "Warszawa"
+                        },
+                        new
+                        {
+                            Id = 9,
+                            PostalCode = "01-870",
+                            SubName = "Bielany",
+                            ViewName = "Warszawa"
+                        },
+                        new
+                        {
+                            Id = 10,
+                            PostalCode = "04-413",
+                            SubName = "Rembertów",
+                            ViewName = "Warszawa"
+                        },
+                        new
+                        {
+                            Id = 11,
+                            PostalCode = "00-117",
+                            SubName = "Śródmieście",
+                            ViewName = "Warszawa"
+                        },
+                        new
+                        {
+                            Id = 12,
+                            PostalCode = "00-575",
+                            SubName = "Śródmieście",
+                            ViewName = "Warszawa"
+                        },
+                        new
+                        {
+                            Id = 13,
+                            PostalCode = "00-654",
+                            SubName = "Śródmieście",
+                            ViewName = "Warszawa"
+                        },
+                        new
+                        {
+                            Id = 14,
+                            PostalCode = "03-784",
+                            SubName = "Targówek",
+                            ViewName = "Warszawa"
+                        },
+                        new
+                        {
+                            Id = 15,
+                            PostalCode = "03-622",
+                            SubName = "Targówek",
+                            ViewName = "Warszawa"
+                        },
+                        new
+                        {
+                            Id = 16,
+                            PostalCode = "04-424",
+                            SubName = "Rembertów",
+                            ViewName = "Warszawa"
+                        },
+                        new
+                        {
+                            Id = 17,
+                            PostalCode = "00-275",
+                            SubName = "Śródmieście",
+                            ViewName = "Warszawa"
+                        },
+                        new
+                        {
+                            Id = 18,
+                            PostalCode = "00-229",
+                            SubName = "Śródmieście",
+                            ViewName = "Warszawa"
+                        },
+                        new
+                        {
+                            Id = 19,
+                            PostalCode = "00-127",
+                            SubName = "Śródmieście",
+                            ViewName = "Warszawa"
+                        },
+                        new
+                        {
+                            Id = 20,
+                            PostalCode = "05-075",
+                            SubName = "Wesoła",
+                            ViewName = "Warszawa"
+                        },
+                        new
+                        {
+                            Id = 21,
+                            PostalCode = "05-075",
+                            SubName = "Wesoła",
+                            ViewName = "Warszawa"
+                        },
+                        new
+                        {
+                            Id = 22,
+                            PostalCode = "02-490",
+                            SubName = "Włochy",
+                            ViewName = "Warszawa"
+                        },
+                        new
+                        {
+                            Id = 23,
+                            PostalCode = "02-168",
+                            SubName = "Włochy",
+                            ViewName = "Warszawa"
+                        },
+                        new
+                        {
+                            Id = 24,
+                            PostalCode = "04-854",
+                            SubName = "Wawer",
+                            ViewName = "Warszawa"
+                        },
+                        new
+                        {
+                            Id = 25,
+                            PostalCode = "04-880",
+                            SubName = "Wawer",
+                            ViewName = "Warszawa"
+                        },
+                        new
+                        {
+                            Id = 26,
+                            PostalCode = "04-682",
+                            SubName = "Wawer",
+                            ViewName = "Warszawa"
+                        },
+                        new
+                        {
+                            Id = 27,
+                            PostalCode = "02-441",
+                            SubName = "Włochy",
+                            ViewName = "Warszawa"
+                        },
+                        new
+                        {
+                            Id = 28,
+                            PostalCode = "01-480",
+                            SubName = "Bemowo",
+                            ViewName = "Warszawa"
+                        },
+                        new
+                        {
+                            Id = 29,
+                            PostalCode = "01-317",
+                            SubName = "Bemowo",
+                            ViewName = "Warszawa"
+                        },
+                        new
+                        {
+                            Id = 30,
+                            PostalCode = "01-696",
+                            SubName = "Bielany",
+                            ViewName = "Warszawa"
+                        },
+                        new
+                        {
+                            Id = 31,
+                            PostalCode = "02-716",
+                            SubName = "Mokotów",
+                            ViewName = "Warszawa"
+                        },
+                        new
+                        {
+                            Id = 32,
+                            PostalCode = "01-493",
+                            SubName = "Bemowo",
+                            ViewName = "Warszawa"
+                        },
+                        new
+                        {
+                            Id = 33,
+                            PostalCode = "01-318",
+                            SubName = "Bemowo",
+                            ViewName = "Warszawa"
+                        },
+                        new
+                        {
+                            Id = 34,
+                            PostalCode = "03-063",
+                            SubName = "Białołęka",
+                            ViewName = "Warszawa"
+                        },
+                        new
+                        {
+                            Id = 35,
+                            PostalCode = "03-128",
+                            SubName = "Białołęka",
+                            ViewName = "Warszawa"
+                        },
+                        new
+                        {
+                            Id = 36,
+                            PostalCode = "01-727",
+                            SubName = "Bielany",
+                            ViewName = "Warszawa"
+                        },
+                        new
+                        {
+                            Id = 37,
+                            PostalCode = "04-474",
+                            SubName = "Rembertów",
+                            ViewName = "Warszawa"
+                        },
+                        new
+                        {
+                            Id = 38,
+                            PostalCode = "00-454",
+                            SubName = "Śródmieście",
+                            ViewName = "Warszawa"
+                        },
+                        new
+                        {
+                            Id = 39,
+                            PostalCode = "00-497",
+                            SubName = "Śródmieście",
+                            ViewName = "Warszawa"
+                        },
+                        new
+                        {
+                            Id = 40,
+                            PostalCode = "00-656",
+                            SubName = "Śródmieście",
+                            ViewName = "Warszawa"
+                        },
+                        new
+                        {
+                            Id = 41,
+                            PostalCode = "03-338",
+                            SubName = "Targówek",
+                            ViewName = "Warszawa"
+                        },
+                        new
+                        {
+                            Id = 42,
+                            PostalCode = "03-528",
+                            SubName = "Targówek",
+                            ViewName = "Warszawa"
+                        },
+                        new
+                        {
+                            Id = 43,
+                            PostalCode = "04-277",
+                            SubName = "Rembertów",
+                            ViewName = "Warszawa"
+                        },
+                        new
+                        {
+                            Id = 44,
+                            PostalCode = "00-249",
+                            SubName = "Śródmieście",
+                            ViewName = "Warszawa"
+                        },
+                        new
+                        {
+                            Id = 45,
+                            PostalCode = "00-513",
+                            SubName = "Śródmieście",
+                            ViewName = "Warszawa"
+                        },
+                        new
+                        {
+                            Id = 46,
+                            PostalCode = "00-430",
+                            SubName = "Śródmieście",
+                            ViewName = "Warszawa"
+                        },
+                        new
+                        {
+                            Id = 47,
+                            PostalCode = "05-075",
+                            SubName = "Wesoła",
+                            ViewName = "Warszawa"
+                        },
+                        new
+                        {
+                            Id = 48,
+                            PostalCode = "05-075",
+                            SubName = "Wesoła",
+                            ViewName = "Warszawa"
+                        },
+                        new
+                        {
+                            Id = 49,
+                            PostalCode = "02-484",
+                            SubName = "Włochy",
+                            ViewName = "Warszawa"
+                        },
+                        new
+                        {
+                            Id = 50,
+                            PostalCode = "02-468",
+                            SubName = "Włochy",
+                            ViewName = "Warszawa"
+                        },
+                        new
+                        {
+                            Id = 51,
+                            PostalCode = "04-682",
+                            SubName = "Wawer",
+                            ViewName = "Warszawa"
+                        },
+                        new
+                        {
+                            Id = 52,
+                            PostalCode = "04-825",
+                            SubName = "Wawer",
+                            ViewName = "Warszawa"
+                        },
+                        new
+                        {
+                            Id = 53,
+                            PostalCode = "04-622",
+                            SubName = "Wawer",
+                            ViewName = "Warszawa"
+                        },
+                        new
+                        {
+                            Id = 54,
+                            PostalCode = "02-243",
+                            SubName = "Włochy",
+                            ViewName = "Warszawa"
+                        },
+                        new
+                        {
+                            Id = 55,
+                            PostalCode = "01-497",
+                            SubName = "Bemowo",
+                            ViewName = "Warszawa"
+                        },
+                        new
+                        {
+                            Id = 56,
+                            PostalCode = "01-386",
+                            SubName = "Bemowo",
+                            ViewName = "Warszawa"
+                        },
+                        new
+                        {
+                            Id = 57,
+                            PostalCode = "01-940",
+                            SubName = "Bielany",
+                            ViewName = "Warszawa"
+                        },
+                        new
+                        {
+                            Id = 58,
+                            PostalCode = "02-708",
+                            SubName = "Mokotów",
+                            ViewName = "Warszawa"
+                        },
+                        new
+                        {
+                            Id = 59,
+                            PostalCode = "01-497",
+                            SubName = "Bemowo",
+                            ViewName = "Warszawa"
+                        },
+                        new
+                        {
+                            Id = 60,
+                            PostalCode = "01-492",
+                            SubName = "Bemowo",
+                            ViewName = "Warszawa"
+                        },
+                        new
+                        {
+                            Id = 61,
+                            PostalCode = "03-089",
+                            SubName = "Białołęka",
+                            ViewName = "Warszawa"
+                        },
+                        new
+                        {
+                            Id = 62,
+                            PostalCode = "03-054",
+                            SubName = "Białołęka",
+                            ViewName = "Warszawa"
+                        },
+                        new
+                        {
+                            Id = 63,
+                            PostalCode = "01-995",
+                            SubName = "Bielany",
+                            ViewName = "Warszawa"
+                        },
+                        new
+                        {
+                            Id = 64,
+                            PostalCode = "04-498",
+                            SubName = "Rembertów",
+                            ViewName = "Warszawa"
+                        },
+                        new
+                        {
+                            Id = 65,
+                            PostalCode = "00-453",
+                            SubName = "Śródmieście",
+                            ViewName = "Warszawa"
+                        },
+                        new
+                        {
+                            Id = 66,
+                            PostalCode = "00-405",
+                            SubName = "Śródmieście",
+                            ViewName = "Warszawa"
+                        },
+                        new
+                        {
+                            Id = 67,
+                            PostalCode = "00-686",
+                            SubName = "Śródmieście",
+                            ViewName = "Warszawa"
+                        },
+                        new
+                        {
+                            Id = 68,
+                            PostalCode = "03-678",
+                            SubName = "Targówek",
+                            ViewName = "Warszawa"
+                        },
+                        new
+                        {
+                            Id = 69,
+                            PostalCode = "03-610",
+                            SubName = "Targówek",
+                            ViewName = "Warszawa"
+                        },
+                        new
+                        {
+                            Id = 70,
+                            PostalCode = "04-428",
+                            SubName = "Rembertównew",
+                            ViewName = "Warszawa"
+                        });
+                });
+
             modelBuilder.Entity("Pandronka.Models.Platnosc", b =>
                 {
                     b.Property<int>("Id")

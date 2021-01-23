@@ -20,8 +20,22 @@ namespace Pandronka.Controllers
 
         public async Task<IActionResult> SelectCity()
         {
-            //todo
-            throw new NotImplementedException();
+            if (await Db.Miasta.AnyAsync())
+            {
+                var cities = await Db.Miasta.ToListAsync();
+                return Ok(new Response()
+                {
+                    Status = "Success",
+                    Data = new []{cities}
+                });
+            }
+
+            return StatusCode(StatusCodes.Status500InternalServerError, new Response()
+                {
+                    Status = "Error",
+                    Message = "No cities in system"
+                }
+            );
         }
 
         /// <summary>
@@ -45,15 +59,14 @@ namespace Pandronka.Controllers
                     Message = "Reference have been added successfully"
                 });
             }
-            else
-            {
-                return StatusCode(StatusCodes.Status500InternalServerError, new Response()
-                    {
-                        Status = "Error",
-                        Message = "One of posted have not been found"
-                    }
-                );
-            }
+            
+            return StatusCode(StatusCodes.Status500InternalServerError, new Response()
+                {
+                    Status = "Error",
+                    Message = "One of posted have not been found"
+                }
+            );
+            
         }
 
         /// <summary>

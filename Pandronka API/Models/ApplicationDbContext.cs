@@ -21,6 +21,7 @@ namespace Pandronka.Models
         public DbSet<Status> Statusy { get; set; }
         public DbSet<Zamowienie> Zamowienia { get; set; }
         public DbSet<Platnosc> Platnosci { get; set; }
+        public DbSet<Miasto> Miasta { get; set; }
 
         
         protected override void OnModelCreating(ModelBuilder builder)
@@ -271,6 +272,81 @@ namespace Pandronka.Models
                     KategoriaId = 5,
                     Nazwa = "Pan Tadeusz"
                 },
+            });
+
+
+            builder.Entity<Miasto>().HasData(new Miasto[]
+            {
+                new Miasto(){Id = 1,ViewName = "Warszawa",PostalCode = "01-376",SubName = "Bemowo"},
+                new Miasto(){Id = 2,ViewName = "Warszawa",PostalCode = "01-475",SubName = "Bemowo"},
+                new Miasto(){Id = 3,ViewName = "Warszawa",PostalCode = "01-934",SubName = "Bielany"},
+                new Miasto(){Id = 4,ViewName = "Warszawa",PostalCode = "00-791",SubName = "Mokotów"},
+                new Miasto(){Id = 5,ViewName = "Warszawa",PostalCode = "01-493",SubName = "Bemowo"},
+                new Miasto(){Id = 6,ViewName = "Warszawa",PostalCode = "01-358",SubName = "Bemowo"},
+                new Miasto(){Id = 7,ViewName = "Warszawa",PostalCode = "03-085",SubName = "Bia³o³êka"},
+                new Miasto(){Id = 8,ViewName = "Warszawa",PostalCode = "03-144",SubName = "Bia³o³êka"},
+                new Miasto(){Id = 9,ViewName = "Warszawa",PostalCode = "01-870",SubName = "Bielany"},
+                new Miasto(){Id = 10, ViewName = "Warszawa", PostalCode = "04-413", SubName = "Rembertów"},
+                new Miasto(){ Id = 11, PostalCode = "00-117", ViewName = "Warszawa", SubName="Œródmieœcie"},
+                new Miasto(){ Id = 12, PostalCode = "00-575", ViewName = "Warszawa", SubName="Œródmieœcie"},
+                new Miasto(){ Id = 13, PostalCode = "00-654", ViewName = "Warszawa", SubName="Œródmieœcie"},
+                new Miasto(){ Id = 14, PostalCode = "03-784", ViewName = "Warszawa", SubName="Targówek"},
+                new Miasto(){ Id = 15, PostalCode = "03-622", ViewName = "Warszawa", SubName="Targówek"},
+                new Miasto(){ Id = 16, PostalCode = "04-424", ViewName = "Warszawa", SubName="Rembertów"},
+                new Miasto(){ Id = 17, PostalCode = "00-275", ViewName = "Warszawa", SubName="Œródmieœcie"},
+                new Miasto(){ Id = 18, PostalCode = "00-229", ViewName = "Warszawa", SubName="Œródmieœcie"},
+                new Miasto(){ Id = 19, PostalCode = "00-127", ViewName = "Warszawa", SubName="Œródmieœcie"},
+                new Miasto(){ Id = 20, PostalCode = "05-075", ViewName = "Warszawa", SubName="Weso³a"},
+                new Miasto(){ Id = 21, PostalCode = "05-075", ViewName = "Warszawa", SubName="Weso³a"},
+                new Miasto(){ Id = 22, PostalCode = "02-490", ViewName = "Warszawa", SubName="W³ochy"},
+                new Miasto(){ Id = 23, PostalCode = "02-168", ViewName = "Warszawa", SubName="W³ochy"},
+                new Miasto(){ Id = 24, PostalCode = "04-854", ViewName = "Warszawa", SubName="Wawer"},
+                new Miasto(){ Id = 25, PostalCode = "04-880", ViewName = "Warszawa", SubName="Wawer"},
+                new Miasto(){ Id = 26, PostalCode = "04-682", ViewName = "Warszawa", SubName="Wawer"},
+                new Miasto(){ Id = 27, PostalCode = "02-441", ViewName = "Warszawa", SubName="W³ochy"},
+                new Miasto(){ Id = 28, PostalCode = "01-480", ViewName = "Warszawa", SubName="Bemowo"},
+                new Miasto(){ Id = 29, PostalCode = "01-317", ViewName = "Warszawa", SubName="Bemowo"},
+                new Miasto(){ Id = 30, PostalCode = "01-696", ViewName = "Warszawa", SubName="Bielany"},
+                new Miasto(){ Id = 31, PostalCode = "02-716", ViewName = "Warszawa", SubName="Mokotów"},
+                new Miasto(){ Id = 32, PostalCode = "01-493", ViewName = "Warszawa", SubName="Bemowo"},
+                new Miasto(){ Id = 33, PostalCode = "01-318", ViewName = "Warszawa", SubName="Bemowo"},
+                new Miasto(){ Id = 34, PostalCode = "03-063", ViewName = "Warszawa", SubName="Bia³o³êka"},
+                new Miasto(){ Id = 35, PostalCode = "03-128", ViewName = "Warszawa", SubName="Bia³o³êka"},
+                new Miasto(){ Id = 36, PostalCode = "01-727", ViewName = "Warszawa", SubName="Bielany"},
+                new Miasto(){ Id = 37, PostalCode = "04-474", ViewName = "Warszawa", SubName="Rembertów"},
+                new Miasto(){ Id = 38, PostalCode = "00-454", ViewName = "Warszawa", SubName="Œródmieœcie"},
+                new Miasto(){ Id = 39, PostalCode = "00-497", ViewName = "Warszawa", SubName="Œródmieœcie"},
+                new Miasto(){ Id = 40, PostalCode = "00-656", ViewName = "Warszawa", SubName="Œródmieœcie"},
+                new Miasto(){ Id = 41, PostalCode = "03-338", ViewName = "Warszawa", SubName="Targówek"},
+                new Miasto(){ Id = 42, PostalCode = "03-528", ViewName = "Warszawa", SubName="Targówek"},
+                new Miasto(){ Id = 43, PostalCode = "04-277", ViewName = "Warszawa", SubName="Rembertów"},
+                new Miasto(){ Id = 44, PostalCode = "00-249", ViewName = "Warszawa", SubName="Œródmieœcie"},
+                new Miasto(){ Id = 45, PostalCode = "00-513", ViewName = "Warszawa", SubName="Œródmieœcie"},
+                new Miasto(){ Id = 46, PostalCode = "00-430", ViewName = "Warszawa", SubName="Œródmieœcie"},
+                new Miasto(){ Id = 47, PostalCode = "05-075", ViewName = "Warszawa", SubName="Weso³a"},
+                new Miasto(){ Id = 48, PostalCode = "05-075", ViewName = "Warszawa", SubName="Weso³a"},
+                new Miasto(){ Id = 49, PostalCode = "02-484", ViewName = "Warszawa", SubName="W³ochy"},
+                new Miasto(){ Id = 50, PostalCode = "02-468", ViewName = "Warszawa", SubName="W³ochy"},
+                new Miasto(){ Id = 51, PostalCode = "04-682", ViewName = "Warszawa", SubName="Wawer"},
+                new Miasto(){ Id = 52, PostalCode = "04-825", ViewName = "Warszawa", SubName="Wawer"},
+                new Miasto(){ Id = 53, PostalCode = "04-622", ViewName = "Warszawa", SubName="Wawer"},
+                new Miasto(){ Id = 54, PostalCode = "02-243", ViewName = "Warszawa", SubName="W³ochy"},
+                new Miasto(){ Id = 55, PostalCode = "01-497", ViewName = "Warszawa", SubName="Bemowo"},
+                new Miasto(){ Id = 56, PostalCode = "01-386", ViewName = "Warszawa", SubName="Bemowo"},
+                new Miasto(){ Id = 57, PostalCode = "01-940", ViewName = "Warszawa", SubName="Bielany"},
+                new Miasto(){ Id = 58, PostalCode = "02-708", ViewName = "Warszawa", SubName="Mokotów"},
+                new Miasto(){ Id = 59, PostalCode = "01-497", ViewName = "Warszawa", SubName="Bemowo"},
+                new Miasto(){ Id = 60, PostalCode = "01-492", ViewName = "Warszawa", SubName="Bemowo"},
+                new Miasto(){ Id = 61, PostalCode = "03-089", ViewName = "Warszawa", SubName="Bia³o³êka"},
+                new Miasto(){ Id = 62, PostalCode = "03-054", ViewName = "Warszawa", SubName="Bia³o³êka"},
+                new Miasto(){ Id = 63, PostalCode = "01-995", ViewName = "Warszawa", SubName="Bielany"},
+                new Miasto(){ Id = 64, PostalCode = "04-498", ViewName = "Warszawa", SubName="Rembertów"},
+                new Miasto(){ Id = 65, PostalCode = "00-453", ViewName = "Warszawa", SubName="Œródmieœcie"},
+                new Miasto(){ Id = 66, PostalCode = "00-405", ViewName = "Warszawa", SubName="Œródmieœcie"},
+                new Miasto(){ Id = 67, PostalCode = "00-686", ViewName = "Warszawa", SubName="Œródmieœcie"},
+                new Miasto(){ Id = 68, PostalCode = "03-678", ViewName = "Warszawa", SubName="Targówek"},
+                new Miasto(){ Id = 69, PostalCode = "03-610", ViewName = "Warszawa", SubName="Targówek"},
+                new Miasto(){ Id = 70, PostalCode = "04-428", ViewName = "Warszawa", SubName="Rembertównew"}
             });
         }
         
