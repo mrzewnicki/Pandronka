@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.ModelBinding;
+using Microsoft.EntityFrameworkCore;
 using Pandronka.Models;
 
 namespace Pandronka.Controllers
@@ -39,18 +40,7 @@ namespace Pandronka.Controllers
                 );
             }
 
-            if (model.Id == null)
-            {
-                return StatusCode(StatusCodes.Status500InternalServerError, new Response()
-                {
-                    Status = "Error",
-                    Message = "Updating interrupted due to preventing danger update method"
-
-                }
-                );
-            }
-
-            if (Db.Kategoria.Any(x => x.Id == model.Id))
+            if (await Db.Kategoria.AnyAsync(x => x.Id == model.Id))
             {
                 Db.JednostkaMiary.Update(model);
                 Db.SaveChanges();
@@ -75,35 +65,37 @@ namespace Pandronka.Controllers
 
         public async Task<IActionResult> AddUnit(JednostkaMiary model)
         {
-
-            if (!ModelState.IsValid)
+            return await Task.Run(() =>
             {
-                string errCallBack = "";
-
-                foreach (var modelState in ViewData.ModelState.Values)
+                if (!ModelState.IsValid)
                 {
-                    foreach (ModelError error in modelState.Errors)
+                    string errCallBack = "";
+
+                    foreach (var modelState in ViewData.ModelState.Values)
                     {
-                        errCallBack += error.ErrorMessage + ";";
+                        foreach (ModelError error in modelState.Errors)
+                        {
+                            errCallBack += error.ErrorMessage + ";";
+                        }
                     }
+
+                    return StatusCode(StatusCodes.Status500InternalServerError, new Response()
+                        {
+                            Status = "Error",
+                            Message = String.Format("Incorrect model data: {0}", errCallBack)
+                        }
+                    );
                 }
 
-                return StatusCode(StatusCodes.Status500InternalServerError, new Response()
+                var added = Db.JednostkaMiary.Add(model);
+                Db.SaveChanges();
+
+                return Ok(new Response()
                 {
-                    Status = "Error",
-                    Message = String.Format("Incorrect model data: {0}", errCallBack)
-                }
-                );
-            }
-
-            var added = Db.JednostkaMiary.Add(model);
-            Db.SaveChanges();
-
-            return Ok(new Response()
-            {
-                Status = "Success",
-                Message = "Record have been added",
-                Data = new[] { added }
+                    Status = "Success",
+                    Message = "Record have been added",
+                    Data = new[] { added }
+                });
             });
         }
     }
