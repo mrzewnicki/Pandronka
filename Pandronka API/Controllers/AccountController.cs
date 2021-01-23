@@ -22,9 +22,11 @@ namespace Pandronka.Controllers
         private readonly UserManager<ApplicationUser> userManager;
         private readonly RoleManager<ApplicationUser> roleManager;
         private readonly IConfiguration configuration;
+        private readonly SignInManger<ApplicationUser> _singInManager;
 
-        public AccountController(UserManager<ApplicationUser> userManager, RoleManager<ApplicationUser> roleManager, IConfiguration configuration)
+        public AccountController(UserManager<ApplicationUser> userManager,SignInManger<ApplicationUser> singInManager, RoleManager<ApplicationUser> roleManager, IConfiguration configuration)
         {
+            _singInManager = singInManager;
             this.userManager = userManager;
             this.roleManager = roleManager;
             this.configuration = configuration;
@@ -68,9 +70,8 @@ namespace Pandronka.Controllers
 
         public IActionResult Logout()
         {
-            //TODO:
-            SignOut();
-            return Ok();
+            await _signInManager.SignOutAsync();
+            return Ok(new Response() { Status = "Success", Message = "User has been logged out"});
         }
 
         [HttpPost]
@@ -129,8 +130,34 @@ namespace Pandronka.Controllers
 
         public IActionResult ChangePassword([FromBody] ChangePasswordDTO request)
         {
-            //TODO
-            return Ok();
+            var user =await  this.userManager.FindByEmailAsync(request.Email);
+            var result = await this.userManager.RemovePasswordAsync(user);
+            if(result.Succeeded)
+            {
+                result = await userManager.AddPasswordAsync(user, "Password");
+                if (result.Succeeded)
+                {
+                    return  Ok(new Response() { Status = "Success", Message = "Email with password sended successfully" });
+                }
+                else
+                {
+                    return StatusCode(StatusCodes.Status500InternalServerError, new Response()
+                    {
+                        Status = "Error",
+                        Message = "Problem was occurred..."
+
+                    }
+                    );
+                }
+            }
+            else
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError, new Response()
+                {
+                    Status = "Error",
+                    Message = "Problem was occured..."
+                });
+            }
         }
 
     }
