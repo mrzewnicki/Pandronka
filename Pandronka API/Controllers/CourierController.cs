@@ -32,21 +32,12 @@ namespace Pandronka.Controllers
         /// <returns></returns>
         public async Task<IActionResult> AssignOrder(int orderId, string courierId)
         {
-            if (orderId == null || courierId == null)
-            {
-                return StatusCode(StatusCodes.Status500InternalServerError, new Response()
-                    {
-                        Status = "Error",
-                        Message = "One of posted id is null"
-                    }
-                );
-            }
-
-            //ToDO: Sprawdzić czy istnieje taki user po id - OBECNIE BRAK POLA W BAZIE PO KTÓRYM MOŻNA SPRAWDZIĆ REALIZATORA
             if (await Db.Zamowienia.AnyAsync(x => x.Id == orderId) && await Db.Users.AnyAsync(x=>x.Id == courierId))
             {
-                //todo: add reference between models
-                //var addingResult = Db.
+                Zamowienie order = await Db.Zamowienia.FindAsync(orderId);
+                order.WykonujacyId = courierId;
+                Db.Zamowienia.Update(order);
+                Db.SaveChanges();
 
                 return Ok(new Response()
                 {
@@ -83,10 +74,62 @@ namespace Pandronka.Controllers
             throw new NotImplementedException();
         }
 
-        public async Task<IActionResult> ShowSummary()
+        [HttpGet]
+        public async Task<IActionResult> ShowSummary(string courierId)
         {
-            //todo summary - BRAK POMYSŁU CO TU MOŻE BYĆ, JESZCZE.. 
-            throw new NotImplementedException();
+            if (!await Db.Users.AnyAsync(x=>x.Id == courierId))
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError, new Response()
+                    {
+                        Status = "Error",
+                        Message = "Courier does not exists"
+                    }
+                );
+            }
+
+            if (!await Db.Zamowienia.AnyAsync(x => x.WykonujacyId == courierId))
+            {
+                return Ok(new Response()
+                {
+                    Status = "Success",
+                    Message = "Courier does not performed any order",
+                    Data = null
+                });
+            }
+
+            var getResult = await Db.Zamowienia.Where(x => x.WykonujacyId == courierId)
+                                                            .Include(x=>x.Koszyk)
+                                                            .Include(x=>x.Platnosc)
+                                                            .Include(x=>x.Status)
+                                                            .ToListAsync();
+
+            /*
+            double totalEarn = 0.00;
+
+            //Count total cash earned for finished orders
+            foreach (Zamowienie zamowienie in getResult.Where(x=>x.StatusId == 4))
+            {
+                double cartPrice = 0.00;
+
+                var getCartProducts = await Db.Kosz_Prod.Where(x => x.Koszyk == zamowienie.Koszyk).Include(x=>x.Produkt).ToListAsync();
+
+                foreach (var cartProduct in getCartProducts)
+                {
+                    cartPrice += cartProduct.Produkt.Cena;
+                }
+
+                totalEarn += cartPrice;
+            }
+            */
+            
+
+            return Ok(new Response()
+            {
+                Status = "Success",
+                Message = "Courier performed "+getResult.Count,
+                Data = new []{ getResult }
+            });
+
         }
     }
 }

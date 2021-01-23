@@ -2,7 +2,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Pandronka.Models
 {
-    public class Zamowienia
+    public class Zamowienie
     {
         public int Id { get; set; }
         public float Kwota { get; set; }

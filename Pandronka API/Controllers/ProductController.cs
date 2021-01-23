@@ -43,6 +43,16 @@ namespace Pandronka.Controllers
                 );
             }
 
+            if (await Db.Produkt.AnyAsync(x => x == model))
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError, new Response()
+                    {
+                        Status = "Error",
+                        Message = String.Format("Similar product already exists")
+                    }
+                );
+            }
+
             var added = Db.Produkt.Add(model);
             Db.SaveChanges();
 
@@ -52,7 +62,6 @@ namespace Pandronka.Controllers
                 Message = "Product have been added",
                 Data = new []{added}
             });
-
         }
 
         [HttpPost]
@@ -78,7 +87,7 @@ namespace Pandronka.Controllers
                 );
             }
 
-            if (Db.Produkt.Any(x => x.Id == model.Id))
+            if (await Db.Produkt.AnyAsync(x => x.Id == model.Id))
             {
                 Db.Produkt.Update(model);
                 Db.SaveChanges();
@@ -104,16 +113,6 @@ namespace Pandronka.Controllers
         [HttpGet]
         public async Task<IActionResult> Show(int id)
         {
-            if (id == null)
-            {
-                return StatusCode(StatusCodes.Status500InternalServerError, new Response()
-                    {
-                        Status = "Error",
-                        Message = "Posted id is null"
-                    }
-                );
-            }
-
             if (await Db.Produkt.AnyAsync(x => x.Id == id))
             {
                 var found = await Db.Produkt.Where(x => x.Id == id)

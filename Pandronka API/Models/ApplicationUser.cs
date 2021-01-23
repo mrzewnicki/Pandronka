@@ -32,7 +32,7 @@ namespace Pandronka.Models
         public string Email { get; set; }
         public string NumerTelefonu { get; set; }
         public  Koszyk Koszyk { get; set; }
-        public virtual ICollection<Zamowienia> Wykonane { get; set; }
+        public virtual ICollection<Zamowienie> Wykonane { get; set; }
 
     }
 }

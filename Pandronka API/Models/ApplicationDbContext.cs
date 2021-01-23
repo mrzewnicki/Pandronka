@@ -19,7 +19,7 @@ namespace Pandronka.Models
         public DbSet<Producent> Producent { get; set; }
         public DbSet<Produkt> Produkt { get; set; }
         public DbSet<Status> Statusy { get; set; }
-        public DbSet<Zamowienia> Zamowienia { get; set; }
+        public DbSet<Zamowienie> Zamowienia { get; set; }
         public DbSet<Platnosc> Platnosci { get; set; }
 
         

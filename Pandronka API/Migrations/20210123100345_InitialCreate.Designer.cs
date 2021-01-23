@@ -10,7 +10,7 @@ using Pandronka.Models;
 namespace Pandronka.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20210123095637_InitialCreate")]
+    [Migration("20210123100345_InitialCreate")]
     partial class InitialCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -610,7 +610,7 @@ namespace Pandronka.Migrations
                         });
                 });
 
-            modelBuilder.Entity("Pandronka.Models.Zamowienia", b =>
+            modelBuilder.Entity("Pandronka.Models.Zamowienie", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -747,7 +747,7 @@ namespace Pandronka.Migrations
                     b.Navigation("Producent");
                 });
 
-            modelBuilder.Entity("Pandronka.Models.Zamowienia", b =>
+            modelBuilder.Entity("Pandronka.Models.Zamowienie", b =>
                 {
                     b.HasOne("Pandronka.Models.Koszyk", "Koszyk")
                         .WithMany()

@@ -26,16 +26,6 @@ namespace Pandronka.Controllers
 
         public async Task<IActionResult> ShowSummaryCart(int cartId)
         {
-            if (cartId == null)
-            {
-                return StatusCode(StatusCodes.Status500InternalServerError, new Response()
-                    {
-                        Status = "Error",
-                        Message = "One of posted id is null"
-                    }
-                );
-            }
-
             if (Db.Koszyk.Any(x => x.Id == cartId))
             {
                 var cart = await Db.Koszyk.Where(x=>x.Id== cartId).Include(x => x.Uzytkownik).FirstAsync();
@@ -85,16 +75,6 @@ namespace Pandronka.Controllers
 
         public async Task<IActionResult> ShowStatus(int orderId)
         {
-            if (orderId == null)
-            {
-                return StatusCode(StatusCodes.Status500InternalServerError, new Response()
-                    {
-                        Status = "Error",
-                        Message = "One of posted id is null"
-                    }
-                );
-            }
-
             if (Db.Zamowienia.Any(x=>x.Id == orderId))
             {
                 var order = await Db.Zamowienia.Where(x => x.Id == orderId).Include(x => x.Status).FirstAsync();
