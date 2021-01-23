@@ -164,24 +164,7 @@ namespace Pandronka.Controllers
                                                             .Include(x=>x.Status)
                                                             .ToListAsync();
 
-            /*
-            double totalEarn = 0.00;
-
-            //Count total cash earned for finished orders
-            foreach (Zamowienie zamowienie in getResult.Where(x=>x.StatusId == 4))
-            {
-                double cartPrice = 0.00;
-
-                var getCartProducts = await Db.Kosz_Prod.Where(x => x.Koszyk == zamowienie.Koszyk).Include(x=>x.Produkt).ToListAsync();
-
-                foreach (var cartProduct in getCartProducts)
-                {
-                    cartPrice += cartProduct.Produkt.Cena;
-                }
-
-                totalEarn += cartPrice;
-            }
-            */
+            
             
 
             return Ok(new Response()

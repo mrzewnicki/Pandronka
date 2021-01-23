@@ -18,10 +18,39 @@ namespace Pandronka.Controllers
             Db = db;
         }
 
-        public async Task<IActionResult> ShowAmount()
+        public async Task<IActionResult> ShowAmount(int orderId)
         {
             //todo - policzyć pełną kwote zamówienia
-            throw new NotImplementedException();
+
+            if (Db.Zamowienia.Any(x => x.Id == orderId))
+            {
+                var order = await Db.Zamowienia.Where(x => x.Id == orderId).Include(x => x.Status).FirstAsync();
+
+
+                //Count total cash earned for finished orders
+                
+                    double cartPrice = 0.00;
+
+                    var getCartProducts = await Db.Kosz_Prod.Where(x => x.Koszyk == order.Koszyk).Include(x => x.Produkt).ToListAsync();
+
+                    foreach (var cartProduct in getCartProducts)
+                    {
+                        cartPrice += cartProduct.Produkt.Cena;
+                    }
+
+                    return Ok(new Response()
+                    {
+                        Status = "Success",
+                        Data = new [] {cartPrice.ToString()}
+                    });
+            }
+            
+            return StatusCode(StatusCodes.Status500InternalServerError, new Response()
+                {
+                    Status = "Error",
+                    Message = "Order have not been found"
+                }
+            );
         }
 
         public async Task<IActionResult> ShowSummaryCart(int cartId)
