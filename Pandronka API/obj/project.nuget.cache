@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "OJ9afFd03iM/8t12bKf2jyfD6sZr4Q+Sighnma/a317ima5xcdlgchKuHqgvSzlhmwLzMFEAo+tKdLTwEhOKoA==",
+  "dgSpecHash": "xcm8xY4Cg5KiGdNqTZoPk8OV278aUmMSuQYlLGYjxbXg3XWn3sWfo04BrpYdhpP4OzCbZ6HSkTULZS07X2UhYQ==",
   "success": true,
-  "projectFilePath": "C:\\Users\\mateu\\OneDrive\\Dokumenty\\GitHub\\Pandronka\\Pandronka API\\Pandronka.csproj",
+  "projectFilePath": "C:\\Users\\mateu\\Documents\\GitHub\\Pandronka\\Pandronka API\\Pandronka.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\mateu\\.nuget\\packages\\humanizer.core\\2.8.26\\humanizer.core.2.8.26.nupkg.sha512",
     "C:\\Users\\mateu\\.nuget\\packages\\microsoft.aspnetcore.authentication\\2.2.0\\microsoft.aspnetcore.authentication.2.2.0.nupkg.sha512",

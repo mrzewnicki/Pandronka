@@ -1,6 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IdentityModel.Tokens.Jwt;
+using System.Linq;
+using System.Net;
+using System.Net.Mail;
 using System.Security.Claims;
 using System.Text;
 using System.Threading.Tasks;
@@ -68,7 +71,7 @@ namespace Pandronka.Controllers
             return Unauthorized();
         }
 
-        public IActionResult Logout()
+        public async Task<IActionResult> Logout()
         {
             await _signInManager.SignOutAsync();
             return Ok(new Response() { Status = "Success", Message = "User has been logged out"});
@@ -128,15 +131,25 @@ namespace Pandronka.Controllers
             return Ok(new Response(){Status = "Success",Message = "User created successfully"});
         }
 
-        public IActionResult ChangePassword([FromBody] ChangePasswordDTO request)
+        private string GeneratePassword(int length)
         {
+            Random random = new Random();
+            const string chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+            return new string(Enumerable.Repeat(chars, length)
+                .Select(s => s[random.Next(s.Length)]).ToArray());
+        }
+
+        public async Task<IActionResult> ChangePassword([FromBody] ChangePasswordDTO request)
+        {
+            string generatedPassword = GeneratePassword(8);
             var user =await  this.userManager.FindByEmailAsync(request.Email);
             var result = await this.userManager.RemovePasswordAsync(user);
             if(result.Succeeded)
             {
-                result = await userManager.AddPasswordAsync(user, "Password");
+                result = await userManager.AddPasswordAsync(user, generatedPassword);
                 if (result.Succeeded)
                 {
+                    SendMail(user.Email,generatedPassword);
                     return  Ok(new Response() { Status = "Success", Message = "Email with password sended successfully" });
                 }
                 else
@@ -158,6 +171,28 @@ namespace Pandronka.Controllers
                     Message = "Problem was occured..."
                 });
             }
+        }
+
+        private void SendMail(string emailAddress,string password)
+        {
+            var smtpClient = new SmtpClient("smtp.poczta.onet.pl")
+            {
+                Port = 587,
+                Credentials = new NetworkCredential("pandronka@op.pl", "P@ndronka#1"),
+                EnableSsl = true,
+            };
+
+            var mailMessage = new MailMessage
+            {
+                From = new MailAddress("email"),
+                Subject = "Nowe hasło",
+                Body = "Hasło do Twojego konta zostało zresetowane.<br />Nowe hasło to: <b>"+password+"</b> <br /> Hasło należy zmienić przy pierwszym logowaniu.",
+                IsBodyHtml = true,
+            };
+
+            mailMessage.To.Add(emailAddress);
+
+            smtpClient.Send(mailMessage);
         }
 
     }
