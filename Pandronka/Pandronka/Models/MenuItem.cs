@@ -24,7 +24,7 @@ namespace Pandronka.Models
         public virtual Category Category { get; set; }
 
         [Display(Name = "Podkategoria")]
-        public int SubCategoryId { get; set; }
+        public int? SubCategoryId { get; set; }
 
         [ForeignKey("SubCategoryId")]
         public virtual SubCategory SubCategory { get; set; }
