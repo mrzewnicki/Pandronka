@@ -1,0 +1,20 @@
+﻿@model string
+@using Pandronka.Utility
+<div style="width:100%">
+    @if (Model == SD.StatusSubmitted)
+    {
+        <img src="~/images/red.png" width="100%" />
+    }
+    @if (Model == SD.StatusInProcess)
+    {
+        <img src="~/images/orange.png" width="100%" />
+    }
+    @if (Model == SD.StatusReady)
+    {
+        <img src="~/images/yellow.png" width="100%" />
+    }
+    @if (Model == SD.StatusCompleted)
+    {
+        <img src="~/images/green.png" width="100%" />
+    }
+</div>
