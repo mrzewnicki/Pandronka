@@ -188,6 +188,11 @@ namespace Pandronka.Areas.Admin.Controllers
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
             var subCategory = await _db.SubCategory.SingleOrDefaultAsync(m => m.Id == id);
+            var anyProductInSubcategory = await _db.MenuItem.Where(m => m.SubCategory.Id == subCategory.Id).FirstOrDefaultAsync();
+
+            if (anyProductInSubcategory != null)
+                return Content(" nie mozna usunąć subkategorii dla której przypisany jest produkt");
+
             _db.SubCategory.Remove(subCategory);
             await _db.SaveChangesAsync();
             return RedirectToAction(nameof(Index));

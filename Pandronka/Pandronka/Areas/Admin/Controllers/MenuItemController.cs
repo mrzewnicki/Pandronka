@@ -51,12 +51,12 @@ namespace Pandronka.Areas.Admin.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> CreatePOST()
         {
-            MenuItemVM.MenuItem.SubCategoryId = Convert.ToInt32(Request.Form["SubCategoryId"].ToString());
-
-            if(!ModelState.IsValid)
+            if(!ModelState.IsValid || Convert.ToInt32(Request.Form["SubCategoryId"]) == 0)
             {
-                return View(MenuItemVM);
+                return Content("Utwórz najpierw podkategorie produktu");
             }
+
+            MenuItemVM.MenuItem.SubCategoryId = Convert.ToInt32(Request.Form["SubCategoryId"].ToString());
 
             _db.MenuItem.Add(MenuItemVM.MenuItem);
             await _db.SaveChangesAsync();

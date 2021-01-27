@@ -154,7 +154,7 @@ namespace Pandronka.Areas.Customer.Controllers
             await _db.SaveChangesAsync();
 
             //Email logic to notify user that order is ready for pickup
-            await _emailSender.SendEmailAsync(_db.Users.Where(u => u.Id == orderHeader.UserId).FirstOrDefault().Email, "Pandronka - Order Ready for Pickup " + orderHeader.Id.ToString(), "Order is ready for pickup.");
+            await _emailSender.SendEmailAsync(_db.Users.Where(u => u.Id == orderHeader.UserId).FirstOrDefault().Email, "Pandronka - Zamowienie gotowe " + orderHeader.Id.ToString(), "Zamowienie juz wiezie kurier");
 
 
             return RedirectToAction("ManageOrder", "Order");
@@ -167,14 +167,11 @@ namespace Pandronka.Areas.Customer.Controllers
             OrderHeader orderHeader = await _db.OrderHeader.FindAsync(OrderId);
             orderHeader.Status = SD.StatusCancelled;
             await _db.SaveChangesAsync();
-            await _emailSender.SendEmailAsync(_db.Users.Where(u => u.Id == orderHeader.UserId).FirstOrDefault().Email, "Pandronka - Order Cancelled " + orderHeader.Id.ToString(), "Order has been cancelled successfully.");
+            await _emailSender.SendEmailAsync(_db.Users.Where(u => u.Id == orderHeader.UserId).FirstOrDefault().Email, "Pandronka - Zamowienie anulowane " + orderHeader.Id.ToString(), "Sukces.");
 
             return RedirectToAction("ManageOrder", "Order");
         }
 
-
-
-        [Authorize]
         public async Task<IActionResult> OrderPickup(int productPage = 1, string searchEmail=null, string searchPhone = null, string searchName = null)
         {
             //var claimsIdentity = (ClaimsIdentity)User.Identity;
@@ -267,7 +264,7 @@ namespace Pandronka.Areas.Customer.Controllers
             return View(orderListVM);
         }
 
-        [Authorize(Roles = SD.ManagerUser)]
+        [Authorize(Roles = SD.CourierUser + "," + SD.ManagerUser)]
         [HttpPost]
         [ActionName("OrderPickup")]
         public async Task<IActionResult> OrderPickupPost(int orderId)

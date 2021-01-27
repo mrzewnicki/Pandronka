@@ -84,7 +84,7 @@
                 </li>
 
             </ul>
-            @if (Model.OrderHeader.Status.Equals(SD.StatusReady) && (User.IsInRole(SD.ManagerUser)))
+            @if (Model.OrderHeader.Status.Equals(SD.StatusReady) && (User.IsInRole(SD.CourierUser)))
             {
                 <button type="submit"  class="btn btn-success form-control"><i class="far fa-thumbs-up"></i> Potwierdż odbiór kurierze</button>
             }

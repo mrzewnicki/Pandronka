@@ -20,7 +20,7 @@ namespace Pandronka.Utility
         public const string StatusSubmitted = "Przyjęty";
         public const string StatusInProcess = "W przygotowaniu";
         public const string StatusReady = "Gotowy do odbioru";
-        public const string StatusCompleted = "Przygotowany";
+        public const string StatusCompleted = "Przygotowany kurier wiezie";
         public const string StatusCancelled = "Anulowany";
 
         public const string PaymentStatusPending = "W trakcie";
