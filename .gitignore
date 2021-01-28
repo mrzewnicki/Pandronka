@@ -1,7 +1,6 @@
 
 *.cache
 *.pdb
-*.cs
 *.pdb
 Pandronka/Pandronka/obj/project.nuget.cache
 Pandronka/Pandronka/obj/project.assets.json
