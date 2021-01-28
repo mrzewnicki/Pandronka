@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Text;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
@@ -12,6 +13,20 @@ namespace Pandronka.Data
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
             : base(options)
         {
+        }
+
+        public ApplicationDbContext()
+        {
+            
+        }
+
+        protected override void OnConfiguring(DbContextOptionsBuilder options)
+        {
+            
+            if (!options.IsConfigured)
+            {
+                options.UseSqlServer("Server=(localdb)\\mssqllocaldb;Database=Pandronka;Trusted_Connection=True;MultipleActiveResultSets=true");
+            }
         }
 
         public DbSet<Category> Category { get; set; }

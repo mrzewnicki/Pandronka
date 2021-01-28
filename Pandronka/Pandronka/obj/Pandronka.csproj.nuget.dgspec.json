@@ -1,23 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Rafik\\Desktop\\pandronaNew\\Pandronka\\Pandronka\\Pandronka\\Pandronka.csproj": {}
+    "C:\\Users\\mateu\\Documents\\GitHub\\Pandronka\\Pandronka\\Pandronka\\Pandronka.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Rafik\\Desktop\\pandronaNew\\Pandronka\\Pandronka\\Pandronka\\Pandronka.csproj": {
+    "C:\\Users\\mateu\\Documents\\GitHub\\Pandronka\\Pandronka\\Pandronka\\Pandronka.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Rafik\\Desktop\\pandronaNew\\Pandronka\\Pandronka\\Pandronka\\Pandronka.csproj",
+        "projectUniqueName": "C:\\Users\\mateu\\Documents\\GitHub\\Pandronka\\Pandronka\\Pandronka\\Pandronka.csproj",
         "projectName": "Pandronka",
-        "projectPath": "C:\\Users\\Rafik\\Desktop\\pandronaNew\\Pandronka\\Pandronka\\Pandronka\\Pandronka.csproj",
-        "packagesPath": "C:\\Users\\Rafik\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Rafik\\Desktop\\pandronaNew\\Pandronka\\Pandronka\\Pandronka\\obj\\",
+        "projectPath": "C:\\Users\\mateu\\Documents\\GitHub\\Pandronka\\Pandronka\\Pandronka\\Pandronka.csproj",
+        "packagesPath": "C:\\Users\\mateu\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\mateu\\Documents\\GitHub\\Pandronka\\Pandronka\\Pandronka\\obj\\",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
-        ],
         "configFilePaths": [
-          "C:\\Users\\Rafik\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\mateu\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -29,7 +26,6 @@
         },
         "frameworks": {
           "netcoreapp3.0": {
-            "targetAlias": "netcoreapp3.0",
             "projectReferences": {}
           }
         },
@@ -41,7 +37,6 @@
       },
       "frameworks": {
         "netcoreapp3.0": {
-          "targetAlias": "netcoreapp3.0",
           "dependencies": {
             "Microsoft.AspNetCore.Authentication.Facebook": {
               "target": "Package",
@@ -124,7 +119,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.102\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.201\\RuntimeIdentifierGraph.json"
         }
       }
     }
