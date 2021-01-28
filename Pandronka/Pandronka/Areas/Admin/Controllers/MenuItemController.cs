@@ -51,7 +51,7 @@ namespace Pandronka.Areas.Admin.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> CreatePOST()
         {
-            if(!ModelState.IsValid || Convert.ToInt32(Request.Form["SubCategoryId"]) == 0)
+            if(Convert.ToInt32(Request.Form["SubCategoryId"]) == 0)
             {
                 return Content("Utwórz najpierw podkategorie produktu");
             }
