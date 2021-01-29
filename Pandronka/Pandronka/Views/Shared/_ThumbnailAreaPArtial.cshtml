@@ -12,29 +12,29 @@
 
         @foreach(var item in Model)
         {
-            <div class="border border-info rounded col-12" style="margin-bottom:10px; margin-top:10px; padding:10px">
+    <div class="card w-20 mt-5 mx-auto">
+        <div class="card-header text-center" style="background-color:rgba(237, 164, 13, 0.46);">
+            <label class="text" style="font-size:24px;color:black">@item.Name</label>
+
+        </div>
+        <div class="card-body">
+            <img src="@item.Image" width="100%" style="border-radius:2%;border:1px solid black" />
+            <div class="col-12 text-center" style="color:black">
+                <br />
+                <h4>@item.Price<small class="text-muted">/zł</small></h4>
+            </div>
+            <div class="row col-12 text-justify d-none d-md-block" style="margin-left:5px;">
+                <p>@Html.Raw(item.Description)</p>
+            </div>
+            <div class="card-footer">
                 <div class="row">
-                    <div class="col-md-3 col-sm-12">
-                        <img src="@item.Image" width="99%" style="border-radius:5px;border:1px solid #bbb9b9" />
+                    <div class="col-sm-12 text-center">
+                        <a asp-action="Details" class="btn btn-outline-warning form-control" asp-route-id="@item.Id">Szczegóły</a>
                     </div>
-                    <div class="col-md-9 col-sm-12">
-                        <div class="row pr-3">
-                            
-                            <div class="col-4 text-right" style="color:maroon">
-                                <h4>$@item.Price</h4>
-                            </div>
-                        </div>
-
-
-                        <div class="row col-12 text-justify d-none d-md-block">
-                            <p>@Html.Raw(item.Description)</p>
-                        </div>
-                        <div class="col-md-3 col-sm-12 offset-md-9 text-center">
-                            <a asp-action="Details" class="btn btn-success form-control" asp-route-id="@item.Id">Szczegoly</a>
-                        </div>
-                    </div>
-                    </div>
-                </div> 
+                </div>
+            </div>
+        </div>
+    </div>
         }
         <div class="p-4"></div>
     </div>
